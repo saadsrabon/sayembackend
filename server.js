@@ -6,9 +6,9 @@ const mongoose = require('mongoose');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-
+console.log(process.env.DATABASE_URL);
 // Connect to MongoDB
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb+srv://saad:4MBRM0NnpGevotub@cluster0.pxf7mj5.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
 
 // User model
 const UserSchema = new mongoose.Schema({
@@ -20,7 +20,7 @@ const User = mongoose.model('User', UserSchema);
 // Middleware
 app.use(bodyParser.json());
 
-const JWT_SECRET = process.env.JWT_SECRET; // Replace this with a strong secret from your .env file
+const JWT_SECRET = "PJc3oMO97hIjVlCIepHcaiasjU8UC5npcPnokFoWa5iCcLUpFlsUKVM88aaNmHb3z3D1m5xRqVS4lVGOdnCJEw" // Replace this with a strong secret from your .env file
 
 // Authentication middleware
 const authenticateToken = (req, res, next) => {
