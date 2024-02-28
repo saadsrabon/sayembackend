@@ -16,6 +16,12 @@ const UserSchema = new mongoose.Schema({
   password: String,
 });
 const User = mongoose.model('User', UserSchema);
+const TodoSchema = new mongoose.Schema({
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    content: String,
+    completed: Boolean,
+  });
+  const Todo = mongoose.model('Todo', TodoSchema);
 
 // Middleware
 app.use(bodyParser.json());
