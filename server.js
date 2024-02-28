@@ -154,6 +154,10 @@ app.delete('/todo/:todoId', authenticateToken, async (req, res) => {
   }
 });
 
+app.get('/', async (req, res) => {
+    res.send('Hello Sayem');
+})
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
