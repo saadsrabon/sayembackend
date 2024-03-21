@@ -154,6 +154,19 @@ app.delete('/todo/:todoId', authenticateToken, async (req, res) => {
   }
 });
 
+// get specific user todos
+app.get('/todos', authenticateToken, async (req, res) => {
+  try {
+    const user = await User.findOne({ username: req.user.username });
+    const todos = await Todo.find({ user: user._id });
+    res.json(todos);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+
+});
+
+
 app.get('/', async (req, res) => {
     res.send('Hello Sayem');
 })
